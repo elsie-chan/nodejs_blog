@@ -5,6 +5,9 @@ const morgan = require("morgan");
 const app = express();
 const port = 3000;
 
+// static file
+app.use(express.static(path.join(__dirname, 'public')));
+
 //HTTP logger
 app.use(morgan("combined"));
 
@@ -13,7 +16,7 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
-    defaultLayout: false
+    
   })
 );
 app.set("view engine", "hbs");
